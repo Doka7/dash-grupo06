@@ -62,6 +62,5 @@ typings/
 *.webm
 
 # Carpetas necesarias
-!/public/audios
-!/public/videos
-!/public/stylesheets
+!public/audios
+!public/videos
