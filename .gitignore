@@ -60,3 +60,8 @@ typings/
 # Multimedia
 *.mp4
 *.webm
+
+# Carpetas necesarias
+!/public/audios
+!/public/videos
+!/public/stylesheets
