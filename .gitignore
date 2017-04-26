@@ -64,6 +64,9 @@ typings/
 # Pyhton
 *.py
 
+#manifests
+*.mpd
+
 # Carpetas necesarias
 !public/audios/
 !public/videos/
