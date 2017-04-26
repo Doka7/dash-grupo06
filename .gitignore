@@ -61,6 +61,9 @@ typings/
 *.mp4
 *.webm
 
+# Pyhton
+*.py
+
 # Carpetas necesarias
 !public/audios/
 !public/videos/
