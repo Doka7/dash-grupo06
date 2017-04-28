@@ -61,9 +61,6 @@ typings/
 *.mp4
 *.webm
 
-# Pyhton
-*.py
-
 #manifests
 *.mpd
 
