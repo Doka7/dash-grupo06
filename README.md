@@ -60,6 +60,16 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/DASH_Adaptive_Streaming_for_HT
 	Importante que los vídeos usen codec VP8, para VP9 todavía no hay soporte. 
 	Para comprobar si un archivo MPD es correcto, existen validators como: http://www-itec.uni-klu.ac.at/dash/?page_id=605
 
+	1.4 PATHS RELATIVOS PARA EJECUTAR LAS HERRAMIENTAS
+
+	Añadir al final del archivo ~/.bashrc las siguientes líneas: 
+
+		export PATH=$PATH:/home/doka/Descargas/webm-tools/webm_dash_manifest
+		export PATH=$PATH:/home/doka/Descargas/libwebm
+
+	Esto permite ejecutar dichas herramientas desde cualquier sitio, sin necesidad de que en el script de python aparezcan rutas absolutas a las herramientas haciendo que el script sea portable a cualquier ordenador. 
+
+
 
 2. ALMACENAMIENTO DE ARCHIVOS MULTIMEDIA EN EL SERVIDOR
 
