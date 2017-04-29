@@ -5,7 +5,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/DASH_Adaptive_Streaming_for_HT
 
 1.1 FFMPEG
 
-	Descarga de FFmpeg para la codificación de audio/vídeo en distintos formatos de calidad que se almacenarán en el servidor. Descarga desde http://www.ffmpeg.org
+	Descarga de FFmpeg para la codificación de audio/vídeo en distintos formatos de calidad que se almacenarán en el servidor.
 
 	Para instalar seguir los pasos indicados en: https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
@@ -25,23 +25,23 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/DASH_Adaptive_Streaming_for_HT
 
 
 
-1.2 SAMPLEMUXER
+1.2 MKV_MUXERSAMPLE
 
-	Instalar libwebm, concretamente para instalar la herramienta samplemuxer para agrupar en clusters las distintas calidades de los archivos multimedia. 
+	Instalar libwebm, concretamente nos interesa la herramienta mkv_muxersample para agrupar alinear los diferentes flujos multimedia generados, habilitando así el switching de calidades más adelante. Básicamente se ocupa de que todos los GOP sigan el mismo formato.
 
 	Para instalar: 
 		- git clone https://chromium.googlesource.com/webm/libwebm
 		- renombrar el Makefile.unix a Makefile y ejecutar 'make'
 
 	Ejemplo de uso: 
-	./mkvmuxer_sample -i /home/doka/Escritorio/video_1280x720_1500k.webm -o /var/www/html/video_1280x720_1500k_final.webm
-	./mkvmuxer_sample -i /home/doka/Escritorio/audio_48k.webm -o /var/www/html/audio_48k_final.webm -output_cues 1 -cues_on_audio_track 1 -max_cluster_duration 2 -audio_track_number 0
+	./mkvmuxer_sample -i video_1280x720_1500k.webm -o video_1280x720_1500k_final.webm
+	./mkvmuxer_sample -i audio_48k.webm -o audio_48k_final.webm -output_cues 1 -cues_on_audio_track 1 -max_cluster_duration 2 -audio_track_number 0
 
 
 
 1.3 WEB_DASH_MANIFEST
 
-	Instalar webm-tools, concretamente para instalar la herramienta 'webm_dash_manifest' para crear archivos .mpd 
+	Instalar webm-tools, concretamente para instalar la herramienta 'webm_dash_manifest' que permite crear archivos .mpd 
 
 	Para instalar: 
 		- git clone https://github.com/webmproject/webm-tools.git
@@ -57,30 +57,35 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/DASH_Adaptive_Streaming_for_HT
 	  	-as id=1,lang=eng \
 	  	-r id=5,file=/var/www/html/audio_48k_final.webm
 
-	Importante que los vídeos usen codec VP8, para VP9 todavía no hay soporte. 
 	Para comprobar si un archivo MPD es correcto, existen validators como: http://www-itec.uni-klu.ac.at/dash/?page_id=605
 
-	1.4 PATHS RELATIVOS PARA EJECUTAR LAS HERRAMIENTAS
 
-	Añadir al final del archivo ~/.bashrc las siguientes líneas: 
+
+1.4 PATHS RELATIVOS PARA EJECUTAR LAS HERRAMIENTAS
+
+	Añadir al final del archivo ~/.bashrc los paths de las carpetas que contienen los programas instalados, en mi caso están serían: 
 
 		export PATH=$PATH:/home/doka/Descargas/webm-tools/webm_dash_manifest
 		export PATH=$PATH:/home/doka/Descargas/libwebm
 
-	Esto permite ejecutar dichas herramientas desde cualquier sitio, sin necesidad de que en el script de python aparezcan rutas absolutas a las herramientas haciendo que el script sea portable a cualquier ordenador. 
+	Esto permite ejecutar dichas herramientas desde cualquier sitio, sin necesidad de que en el script de python aparezcan rutas absolutas a las herramientas. De este modo el script es facilmente ejecutable desde cualquier ordenador. 
+
+
+2. GENERACIÓN DE ESPACIO DE TRABAJO. EXPRESS. 
+
+	Para generar la estructura de directorios que permita el correcto funcionamiento del script, así como para facilitar el trabajo en grupo al subir toda esta estructura común a GitHub, utilizamos Express. 
+
+	Seguir los pasos indicados en: https://expressjs.com/en/starter/installing.html
+
+3. EJECUCIÓN DEL SCRIPT encoder.py
+
+	El script mencionado genera automáticamente las distintas representaciones del contenido audiovisual que se indique como parámetro, además del fichero manifest correspondiente. El archivo a codificar debe estar almacenado en public/videos/original. 
+
+	Ejemplo de uso: ./encoder.py -e clip_monza.mp4
+
+	Tras su ejecución, la aplicación podrá lanzarse con el comando node bin/www, y podrá accederse desde cualquier navegador web en el puerto 3000. 
 
 
 
-2. ALMACENAMIENTO DE ARCHIVOS MULTIMEDIA EN EL SERVIDOR
 
-Una vez tenemos todo instalado, hay que alojar en un servidor web HTTP que admita 'byte range requests' los ficheros .mpd, y también habrá que alojar la página web desde la que se reproducirán los vídeos. 
-
-	- Usamos Apache2 como servidor local para alojar tanto la página web donde se reproducirán los vídeos como los archivos .mpd y .webm
-	Ejemplo de contenido en el servidor: 
-		/var/www/html# ls
-		audio_48k-final.webm             video_160x90_250k_final.webm
-		index.html                       video_320x180_500k_final.webm
-		index_original.html              video_640x360_1000k_final.webm
-		my_video_manifest.mpd            video_640x360_750k_final.webm
-		video_1280x720_1500k_final.webm
 
