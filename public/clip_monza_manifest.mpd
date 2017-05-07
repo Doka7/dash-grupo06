@@ -9,35 +9,35 @@
   profiles="urn:webm:dash:profile:webm-on-demand:2012">
   <Period id="0" start="PT0S" duration="PT33.201S" >
     <AdaptationSet id="0" mimeType="video/webm" codecs="vp8" lang="eng" subsegmentAlignment="true" subsegmentStartsWithSAP="1" bitstreamSwitching="true">
-      <Representation id="1" bandwidth="1492048" width="1280" height="720">
+      <Representation id="1" bandwidth="1493250" width="1280" height="720">
         <BaseURL>videos/codec/clip_monza_1280x720_1500k.webm</BaseURL>
-        <SegmentBase indexRange="6376131-6376260">
+        <SegmentBase indexRange="6381115-6381244">
           <Initialization range="0-263" />
         </SegmentBase>
       </Representation>
-      <Representation id="2" bandwidth="745250" width="640" height="360">
+      <Representation id="2" bandwidth="747803" width="640" height="360">
         <BaseURL>videos/codec/clip_monza_640x360_750k.webm</BaseURL>
-        <SegmentBase indexRange="3185312-3185441">
+        <SegmentBase indexRange="3195893-3196022">
           <Initialization range="0-263" />
         </SegmentBase>
       </Representation>
-      <Representation id="3" bandwidth="496135" width="320" height="180">
+      <Representation id="3" bandwidth="495965" width="320" height="180">
         <BaseURL>videos/codec/clip_monza_320x180_500k.webm</BaseURL>
-        <SegmentBase indexRange="2120139-2120268">
+        <SegmentBase indexRange="2119710-2119839">
           <Initialization range="0-262" />
         </SegmentBase>
       </Representation>
-      <Representation id="4" bandwidth="248698" width="160" height="90">
+      <Representation id="4" bandwidth="249627" width="160" height="90">
         <BaseURL>videos/codec/clip_monza_160x90_250k.webm</BaseURL>
-        <SegmentBase indexRange="1062978-1063107">
+        <SegmentBase indexRange="1066929-1067058">
           <Initialization range="0-261" />
         </SegmentBase>
       </Representation>
     </AdaptationSet>
     <AdaptationSet id="1" mimeType="audio/webm" codecs="opus" lang="eng" audioSamplingRate="48000" subsegmentStartsWithSAP="1">
-      <Representation id="5" bandwidth="86959">
+      <Representation id="5" bandwidth="86961">
         <BaseURL>audios/codec/clip_monza_48k.webm</BaseURL>
-        <SegmentBase indexRange="372283-372555">
+        <SegmentBase indexRange="372291-372563">
           <Initialization range="0-293" />
         </SegmentBase>
       </Representation>
