@@ -1,9 +1,9 @@
 var updateInterval = 1000;
 var player = dashjs.MediaPlayer().create();
 var url = "/clip_monza_manifest.mpd";
-video = document.querySelector(".dash-video-player");
-player.initialize(video, url, true);
-player.getDebug().setLogToBrowserConsole(false);
+video = document.querySelector("#dash-video-player");
+player.initialize(video, url, false);
+
 var metricsInterval = null;
 
 //Metrics
@@ -31,8 +31,7 @@ function updateMetrics(type){
 	if (metrics && dashMetrics){
 		videoBufferLevel = dashMetrics.getCurrentBufferLevel(metrics);
 		$("#buffer").text("Buffer length: " + videoBufferLevel);
-		console.log("Video buffer level: " +videoBufferLevel);
+		//console.log("Video buffer level: " +videoBufferLevel);
 	}
 };
-
 
