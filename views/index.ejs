@@ -72,14 +72,43 @@
 
   <div class="row">
     <div id="videoContainer" class="col-md-9" align="center">
-       <video  id="dash-video-player" class="embed-responsive-item " src="/clip_monza_manifest.mpd" controls></video>
+       <video id="dash-video-player" class="embed-responsive-item " src="/clip_monza_manifest.mpd" controls></video>
     </div>  
     <div class="col-md-3">
          <h2>Estadísticas</h2>
+         <h3>Vídeo</h3>
          <div class="tab-content">
-           <div>
-             <label id="buffer" for="buffer">
+           <div class="row">
+             <label id="videoBuffer" for="buffer">
                Buffer length: 
+            </label>
+          </div>
+          <div class="row">
+            <label id="videofps" for="fps">
+               Dropped Frames: 
+            </label>
+          </div>
+          <div class="row">
+            <label id="videoBitrate" for="bitrate">
+               Bitrate: 
+            </label>
+          </div>
+         </div>
+         <h3>Audio</h3>
+         <div class="tab-content">
+           <div class="row">
+             <label id="audioBuffer" for="buffer">
+               Buffer length: 
+            </label>
+          </div>
+          <div class="row">
+            <label id="audiofps" for="fps">
+               Dropped Frames: 
+            </label>
+          </div>
+          <div class="row">
+            <label id="audioBitrate" for="bitrate">
+               Bitrate: 
             </label>
           </div>
          </div>
